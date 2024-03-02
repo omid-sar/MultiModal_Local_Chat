@@ -1,4 +1,4 @@
-name: transformer_en_fa
+name: rag_navig
 
 channels:
   - pytorch
