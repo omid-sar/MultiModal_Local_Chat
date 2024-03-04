@@ -9,4 +9,8 @@ config = ConfigurationManager()
 pdf_processing_config = config.get_pdf_processing_config()
 pdf_processing_config.processed_directory
 processed_directory = Path(pdf_processing_config.processed_directory)
-create_directories(processed_directory)
+create_directories([processed_directory])
+
+
+import os
+os.makedirs(processed_directory)
