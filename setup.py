@@ -6,9 +6,9 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 __version__ = "0.0.0"
 
-REPO_NAME = "End_to_End_Transformer_En_Fa"
+REPO_NAME = "RAG_Navigator"
 AUTHOR_USER_NAME = "omid-sar"
-SRC_REPO = "TransformerTranslateEnFa"
+SRC_REPO = "RagNavigator"
 AUTHOR_EMAIL = "mr.omid.sardari@gmail.com"
 
 
@@ -18,7 +18,7 @@ setuptools.setup(
     version=__version__,
     author=AUTHOR_USER_NAME,
     author_email=AUTHOR_EMAIL,
-    description="A small python package for NLP app",
+    description="A small python package for RAG app",
     long_description=long_description,
     long_description_content="text/markdown",
     url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",

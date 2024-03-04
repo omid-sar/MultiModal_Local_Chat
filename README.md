@@ -25,7 +25,7 @@
 2. **Create and Activate a Conda Environment**: 
 
     ```bash
-    conda create -n rag_navigator python=3.8 -y
+    conda env create -f environment.yml
     ```
    ```bash
    conda activate rag_navigator
