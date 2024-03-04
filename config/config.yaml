@@ -1,0 +1,56 @@
+artifacts_root: artifacts
+
+# PDF Processing
+pdf_processing:
+  root_dir: ${artifacts_root}/pdf_processing
+  processed_directory: ${pdf_processing.root_dir}/processed
+  temp_directory: ${pdf_processing.root_dir}/temp
+
+# URL Content Processing
+url_processing:
+  root_dir: ${artifacts_root}/url_processing
+  processed_directory: ${url_processing.root_dir}/processed
+  temp_directory: ${url_processing.root_dir}/temp
+
+# Data Cleaning
+data_cleaning:
+  root_dir: ${artifacts_root}/data_cleaning
+  cleaned_data_directory: ${data_cleaning.root_dir}/cleaned
+
+# Vectorization and Database Management
+vectorization:
+  root_dir: ${artifacts_root}/vectorization
+  embedding_model: "text-embedding-ada-002"
+  vector_db_directory: ${vectorization.root_dir}/vectordb
+
+database_management:
+  root_dir: ${vectorization.vector_db_directory}
+  db_path: ${database_management.root_dir}/db.sqlite3
+
+# OpenAI API Integration
+openai_integration:
+  root_dir: ${artifacts_root}/openai_integration
+  api_key: "your_openai_api_key_here"
+  default_model: "gpt-35-turbo-16k"
+  temperature: 0.5
+
+# Chat History Management
+chat_history:
+  root_dir: ${artifacts_root}/chat_history
+  max_entries: 5
+  storage_file: ${chat_history.root_dir}/{session_id}.csv
+
+# Application Configuration
+application:
+  streamlit_app:
+    root_dir: ${artifacts_root}/ui
+    port: 8501
+
+  api_service:
+    root_dir: ${artifacts_root}/api_service
+    port: 5000
+
+# Experimental Settings
+experimental:
+  root_dir: ${artifacts_root}/experimental
+  trials_notebook: ${experimental.root_dir}/trials.ipynb

@@ -57,6 +57,7 @@ list_of_files = [
     f"src/{project_name}/ui/__init__.py",
     f"src/{project_name}/ui/streamlit_app.py",  # Main Streamlit app interface
     f"src/{project_name}/constants/__init__.py",
+    f"src/{project_name}/entity/__init__.py",
     "config/config.yaml",
     "app.py",  # Entry point for running the Streamlit app
     "main.py",  # Main script for initializing components and starting the app

@@ -1,9 +1,8 @@
 name: rag_navigator
 channels:
   - conda-forge
-  - apple 
+  - apple
   - defaults
-
 dependencies:
   - python=3.11.4
   - pip
@@ -22,18 +21,18 @@ dependencies:
       - chromadb
       - gradio==4.13.0
       - httpx==0.24.1
-      - uvicorn>=0.25.0,<0.26.0 
+      - uvicorn>=0.25.0,<0.26.0
       - Jinja2==3.1.2
+      - PyYAML
+      - python-box==6.0.2
+      - ensure==1.0.2
       - altair==5.1.1
       - py7zr
       - notebook
       - boto3
       - mypy-boto3-s3
-      - python-box==6.0.2
-      - ensure==1.0.2
       - wandb==0.15.9
       - tensorboard==2.13.0
-      - "-e ."
-
+      - "-e ."  # Uncomment if you have a local package to install in editable mode
 platforms:
   - osx-arm64
