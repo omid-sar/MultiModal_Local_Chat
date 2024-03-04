@@ -1,6 +1,8 @@
+import os
 from RagNavigator.constants import *
 from RagNavigator.utils.common import read_yaml, create_directories
 from pathlib import Path
+from dotenv import load_dotenv
 from RagNavigator.entity import PDFProcessingConfig
 from RagNavigator.entity import URLProcessingConfig
 from RagNavigator.entity import DataCleaningConfig
@@ -63,10 +65,11 @@ class ConfigurationManager:
         config = self.config['openai_integration']
         return OpenAIIntegrationConfig(
             root_dir=Path(config['root_dir']),
-            api_key=config['api_key'],
+            api_key=os.getenv("OPENAI_API_KEY"),
             default_model=config['default_model'],
             temperature=config['temperature']
         )
+
 
     def get_chat_history_config(self) -> ChatHistoryConfig:
         config = self.config['chat_history']
@@ -78,6 +81,7 @@ class ConfigurationManager:
 
     def get_application_config(self) -> ApplicationConfig:
         config = self.config['application']
+        load_dotenv()
         return ApplicationConfig(
             streamlit_app_root=Path(config['streamlit_app']['root_dir']),
             streamlit_app_port=config['streamlit_app']['port'],
