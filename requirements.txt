@@ -33,3 +33,8 @@ numpy
 jupyter
 
  -e .  # Uncomment if you need to install a local package in editable mode
+
+
+# pip install --upgrade openai langchain-community
+#  pip install pypdf  
+# pip install pyprojroot  
