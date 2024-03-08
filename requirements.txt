@@ -1,40 +1,13 @@
-# Core Libraries
-python-dotenv
-openai==0.28.0
-langchain==0.1.10
-chainlit==1.0.301
-docarray
-tiktoken
-chromadb
-gradio==4.13.0
-httpx==0.24.1
-uvicorn>=0.25.0,<0.26.0
-Jinja2==3.1.2
-PyYAML
-python-box==6.0.2
-ensure==1.0.2
-
-# Data Processing and Visualization
-pandas
-matplotlib
-altair==5.1.1
-
-# Utilities and Storage
-py7zr
-notebook
-boto3
-mypy-boto3-s3
-wandb==0.15.9
-tensorboard==2.13.0
-
-# Development Utilities
-black
-numpy
-jupyter
-
- -e .  # Uncomment if you need to install a local package in editable mode
-
-
-# pip install --upgrade openai langchain-community
-#  pip install pypdf  
-# pip install pyprojroot  
+chromadb==0.4.23
+ctransformers==0.2.27
+InstructorEmbedding==1.0.1
+langchain==0.1.9
+langchain-community==0.0.22
+llama-cpp-python==0.2.20
+librosa==0.10.1
+pypdfium2==4.27.0
+pyyaml==6.0.1
+sentence-transformers==2.3.1
+streamlit==1.31.1
+streamlit-mic-recorder==0.0.4
+transformers==4.38.1
