@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from RagNavigator.logging import logger
+from Multimodal.logging import logger
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path

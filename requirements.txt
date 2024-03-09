@@ -11,3 +11,5 @@ sentence-transformers==2.3.1
 streamlit==1.31.1
 streamlit-mic-recorder==0.0.4
 transformers==4.38.1
+ -e .  # Uncomment if you need to install a local package in editable mode
+

@@ -1,17 +1,17 @@
 import os
-from RagNavigator.constants import *
-from RagNavigator.utils.common import read_yaml, create_directories
+from Multimodal.constants import *
+from Multimodal.utils.common import read_yaml, create_directories
 from pathlib import Path
 from dotenv import load_dotenv
-from RagNavigator.entity import PDFProcessingConfig
-from RagNavigator.entity import URLProcessingConfig
-from RagNavigator.entity import DataCleaningConfig
-from RagNavigator.entity import VectorizationConfig
-from RagNavigator.entity import DatabaseManagementConfig
-from RagNavigator.entity import OpenAIIntegrationConfig
-from RagNavigator.entity import ChatHistoryConfig
-from RagNavigator.entity import ApplicationConfig
-from RagNavigator.entity import ExperimentalConfig
+from Multimodal.entity import PDFProcessingConfig
+from Multimodal.entity import URLProcessingConfig
+from Multimodal.entity import DataCleaningConfig
+from Multimodal.entity import VectorizationConfig
+from Multimodal.entity import DatabaseManagementConfig
+from Multimodal.entity import OpenAIIntegrationConfig
+from Multimodal.entity import ChatHistoryConfig
+from Multimodal.entity import ApplicationConfig
+from Multimodal.entity import ExperimentalConfig
 
 
 

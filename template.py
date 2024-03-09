@@ -7,7 +7,7 @@ logging.basicConfig(
 )
 
 
-project_name = "RagNavigator"
+project_name = "Multimodal"
 list_of_files = [
     "github/workflows/.gitkeep",
     f"src/{project_name}/__init__.py",

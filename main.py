@@ -1,9 +1,9 @@
 from pathlib import Path
-from RagNavigator.logging import logger
-from RagNavigator.utils.common import create_directories
+from Multimodal.logging import logger
+from Multimodal.utils.common import create_directories
 
 logger.info("Welcome to my custome log")
-from RagNavigator.config.configuration import ConfigurationManager 
+from Multimodal.config.configuration import ConfigurationManager 
 
 config = ConfigurationManager()
 pdf_processing_config = config.get_pdf_processing_config()
