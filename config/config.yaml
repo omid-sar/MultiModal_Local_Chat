@@ -1,10 +1,12 @@
 artifacts_root: artifacts
 
 # PDF Processing
-pdf_processing:
-  root_dir: artifacts/pdf_processing
-  processed_directory: artifacts/pdf_processing/processed
-  temp_directory: artifacts/pdf_processing/temp
+model_load:
+  root_dir: artifacts/model_load
+  model_names:
+    - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q3_K_M.gguf"
+    - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q5_K_M.gguf"
+  model_directory: artifacts/model_load/models
 
 # URL Content Processing
 url_processing:

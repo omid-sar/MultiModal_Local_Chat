@@ -2,8 +2,10 @@ import os
 from Multimodal.constants import *
 from Multimodal.utils.common import read_yaml, create_directories
 from pathlib import Path
+from Multimodal.entity import ModelLoadConfig
+
 from dotenv import load_dotenv
-from Multimodal.entity import PDFProcessingConfig
+
 from Multimodal.entity import URLProcessingConfig
 from Multimodal.entity import DataCleaningConfig
 from Multimodal.entity import VectorizationConfig
@@ -15,20 +17,28 @@ from Multimodal.entity import ExperimentalConfig
 
 
 
+
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH):
         self.config = read_yaml(config_filepath)
  
 
-        create_directories([Path(self.config['artifacts_root'])])
+        create_directories([self.config.artifacts_root])
 
-    def get_pdf_processing_config(self) -> PDFProcessingConfig:
-        config = self.config['pdf_processing']
-        return PDFProcessingConfig(
-            root_dir=Path(config['root_dir']),
-            processed_directory=Path(config['processed_directory']),
-            temp_directory=Path(config['temp_directory'])
+    
+    def get_model_load_config(self) -> ModelLoadConfig:
+        config = self.config.model_load
+
+        create_directories([config.root_dir])
+
+        model_load_config = ModelLoadConfig(
+            root_dir = config.root_dir,
+            model_names = config.model_names,
+            model_directory= config.model_directory
         )
+        return model_load_config
+
+
 
     def get_url_processing_config(self) -> URLProcessingConfig:
         config = self.config['url_processing']

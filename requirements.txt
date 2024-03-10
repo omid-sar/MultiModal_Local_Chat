@@ -13,3 +13,6 @@ streamlit-mic-recorder==0.0.4
 transformers==4.38.1
  -e .  # Uncomment if you need to install a local package in editable mode
 
+#huggingface-hub==0.21.4
+#python-box==6.0.2
+#ensure==1.0.2

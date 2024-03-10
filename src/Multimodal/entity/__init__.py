@@ -3,10 +3,10 @@ from pathlib import Path
 from typing import List, Tuple
 
 @dataclass(frozen=True)
-class PDFProcessingConfig:
+class ModelLoadConfig:
     root_dir: Path
-    processed_directory: Path
-    temp_directory: Path
+    model_names: List[str]
+    model_directory: Path
 
 @dataclass(frozen=True)
 class URLProcessingConfig:
