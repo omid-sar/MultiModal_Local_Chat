@@ -16,8 +16,6 @@ from Multimodal.entity import ApplicationConfig
 from Multimodal.entity import ExperimentalConfig
 
 
-
-
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH):
         self.config = read_yaml(config_filepath)
@@ -32,9 +30,9 @@ class ConfigurationManager:
         create_directories([config.root_dir])
 
         model_load_config = ModelLoadConfig(
-            root_dir = config.root_dir,
+            root_dir = Path(config.root_dir),
             model_names = config.model_names,
-            model_directory= config.model_directory
+            model_directory= Path(config.model_directory)
         )
         return model_load_config
 

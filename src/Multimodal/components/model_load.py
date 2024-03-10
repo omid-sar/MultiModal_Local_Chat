@@ -24,22 +24,3 @@ class ModelLoad:
             else:
                 logger.info(f"Model {filename} already exists at {model_path}. Skipping download. Size: {get_size(dataset_path)}")
 
-
-
-
-from Multimodal.config.configuration import ConfigurationManager
-
-
-
-class ModelLoadPipeline:
-    def __init__(self):
-        pass
-
-    def main(self):
-        config = ConfigurationManager()
-        model_load_config = config.get_model_load_config()
-        downloader = ModelLoad(config=model_load_config)
-        downloader.download_models()
-
-model = ModelLoadPipeline()
-model.main()
