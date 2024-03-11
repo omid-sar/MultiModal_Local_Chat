@@ -1,13 +1,17 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
+import json
+from typing import List
+# Assuming HumanMessage and AIMessage are defined elsewhere and imported correctly
 from Multimodal.logging import logger
+from Multimodal.constants import *
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 import re
-
+from langchain.schema.messages import HumanMessage, AIMessage
 
 
 @ensure_annotations
@@ -50,6 +54,48 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 
+@ensure_annotations
+def save_chat_history_json(chat_history: List, file_path: str) -> None:
+    """
+    Saves the chat history to a JSON file.
+
+    Args:
+        chat_history: A list of message objects (either HumanMessage or AIMessage).
+        file_path: The path to the file where the chat history will be saved.
+    """
+    with open(file_path, "w") as f:
+        json_data = []
+        for message in chat_history:
+            message_dict = message.dict()
+            json_data.append(message_dict)
+        json.dump(json_data, f, ensure_ascii=False, indent=4)  
+    logger.info(f"Chat history successfully save to {file_path}. ")
+
+
+
+@ensure_annotations
+def load_chat_history_json(file_path: str) -> List:
+    """
+    Loads the chat history from a JSON file and returns a list of message objects.
+
+    Args:
+        file_path: The path to the file from which the chat history will be loaded.
+
+    Returns:
+        A list of message objects (either HumanMessage or AIMessage based on the type specified in the JSON).
+    """
+    with open(file_path, "r") as f:
+        json_data = json.load(f)
+        messages = []
+        for message in json_data:
+            if message["type"] == "human":
+                messages.append(HumanMessage(**message))
+            else:
+                messages.append(AIMessage(**message))
+            logger.info(f"Chat history successfully loaded from {file_path}.")
+            return messages
+
+
 
 @ensure_annotations
 def get_size(path: Path) -> str:
@@ -64,6 +110,20 @@ def get_size(path: Path) -> str:
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
 
+
+@ensure_annotations
+def get_avatar(sender_type: str) -> str:
+    """
+    Returns the avatar file path for a given sender type ('human' or 'bot').
+    """
+    if sender_type == "human":
+        return USER_AVATAR_FILE_PATH
+    else:
+        return BOT_AVATAR_FILE_PATH
+
+
+def get_timestamp():
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 class DirectoryTree:
@@ -98,3 +158,5 @@ class DirectoryTree:
 
 
 
+
+    
