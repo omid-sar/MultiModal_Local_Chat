@@ -9,4 +9,5 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.llms import Ollama
 
 from Multimodal.components.prompt_templates import memory_prompt_template
-from utils import load_config
+from Multimodal.config.configuration import ConfigurationManager
+
