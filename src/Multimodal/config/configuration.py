@@ -24,19 +24,22 @@ class ConfigurationManager:
         create_directories([self.config.artifacts_root])
 
     
+
     def get_model_load_config(self) -> ModelLoadConfig:
         config = self.config.model_load
-
-        create_directories([config.root_dir])
-
-        model_load_config = ModelLoadConfig(
-            root_dir = Path(config.root_dir),
-            model_names = config.model_names,
-            model_directory= Path(config.model_directory)
+        create_directories([Path(config['root_dir'])])
+        
+        return ModelLoadConfig(
+            root_dir = Path(config['root_dir']),
+            text_processing_model_names = config['text_processing_model_names'],
+            text_processing_model_directory = Path(config['text_processing_model_directory']),
+            sentences_embedding_model_name = config['sentences_embedding_model_name'],
+            sentences_embedding_model_directory = Path(config['sentences_embedding_model_directory']),
+            audio_transcription_model_name = config['audio_transcription_model_name'],
+            audio_transcription_model_directory = Path(config['audio_transcription_model_directory']),
+            multimodal_model_names = config['multimodal_model_names'],
+            multimodal_model_directory = Path(config['multimodal_model_directory']),
         )
-        return model_load_config
-
-
 
     def get_url_processing_config(self) -> URLProcessingConfig:
         config = self.config['url_processing']

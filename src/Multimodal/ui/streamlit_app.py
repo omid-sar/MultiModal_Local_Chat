@@ -5,6 +5,9 @@ from Multimodal.utils.common import get_timestamp, get_avatar
 #import sqlite3
 #from streamlit_mic_recorder import mic_recorder
 
+def load_chain():
+    return 
+
 
 def set_send_input():
     st.session_state.send_input = True
@@ -33,7 +36,8 @@ def main():
     send_buttom = st.button(":blue[SEND]", key="send_buttom")
     if send_buttom or st.session_state.send_input:
         if st.session_state.user_question != "":
-            llm_response = "This is Place holder for the future model response"
+            llm_response = f"This is Place holder for the future model response and the prompt was: {st.session_state.user_question}"
+
 
             with chat_container:
                 st.chat_message("user").write(st.session_state.user_question)

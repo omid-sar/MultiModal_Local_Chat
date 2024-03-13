@@ -8,7 +8,7 @@ from Multimodal.components.model_load import ModelLoad
 config = ConfigurationManager()
 
 
-STAGE_NAME = "Model Load Stage"
+STAGE_NAME = "Models and Embeddings Load Stage"
 try:
     logger.info(f"\n\nx{'=' * 80}x \n\n>>>>>> stage {STAGE_NAME} started <<<<<<") 
     model_load_config = config.get_model_load_config()
@@ -18,3 +18,4 @@ try:
 except Exception as e:
         logger.exception(e)
         raise e
+

@@ -3,10 +3,20 @@ artifacts_root: artifacts
 # PDF Processing
 model_load:
   root_dir: artifacts/model_load
-  model_names:
-    - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q3_K_M.gguf"
+  text_processing_model_names:
+    #- "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q3_K_M.gguf"
     - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q5_K_M.gguf"
-  model_directory: artifacts/model_load/models
+  text_processing_model_directory: artifacts/model_load/text_processing_model
+  sentences_embedding_model_name: "BAAI/bge-large-en-v1.5"
+  sentences_embedding_model_directory: artifacts/model_load/sentences_embedding_model
+  audio_transcription_model_name: "openai/whisper-small"
+  audio_transcription_model_directory: artifacts/model_load/audio_transcription_model
+  multimodal_model_names:
+    - mys/ggml_llava-v1.5-7b ggml-model-q5_k.gguf # llava_model
+    - mys/ggml_llava-v1.5-7b mmproj-model-f16.gguf # clip_model
+  multimodal_model_directory: artifacts/model_load/multimodal_model
+
+
 
 # URL Content Processing
 url_processing:

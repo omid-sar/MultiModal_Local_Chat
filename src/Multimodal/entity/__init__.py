@@ -5,8 +5,14 @@ from typing import List, Tuple
 @dataclass(frozen=True)
 class ModelLoadConfig:
     root_dir: Path
-    model_names: List[str]
-    model_directory: Path
+    text_processing_model_names: List[str]
+    text_processing_model_directory: Path
+    sentences_embedding_model_name: str
+    sentences_embedding_model_directory: Path
+    audio_transcription_model_name: str
+    audio_transcription_model_directory: Path
+    multimodal_model_names: List[str]
+    multimodal_model_directory: Path
 
 @dataclass(frozen=True)
 class URLProcessingConfig:

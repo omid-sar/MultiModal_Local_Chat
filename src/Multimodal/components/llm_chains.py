@@ -11,3 +11,4 @@ from langchain_community.llms import Ollama
 from Multimodal.components.prompt_templates import memory_prompt_template
 from Multimodal.config.configuration import ConfigurationManager
 
+config = 

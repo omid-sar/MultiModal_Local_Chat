@@ -96,20 +96,27 @@ def load_chat_history_json(file_path: str) -> List:
             return messages
 
 
-
-@ensure_annotations
 def get_size(path: Path) -> str:
-    """get size in KB
 
-    Args:
-        path (Path): path of the file
+    total_size = 0
+    if path.is_dir():
+        for dirpath, dirnames, filenames in os.walk(path):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                if not os.path.islink(fp):
+                    total_size += os.path.getsize(fp)
+    else:
+        total_size = os.path.getsize(path)
 
-    Returns:
-        str: size in KB
-    """
-    size_in_kb = round(os.path.getsize(path)/1024)
-    return f"~ {size_in_kb} KB"
-
+    # Convert size to appropriate unit
+    if total_size < 1024:  # Bytes
+        return f"{total_size} Bytes"
+    elif total_size < 1024**2:  # KB
+        return f"{total_size / 1024:.2f} KB"
+    elif total_size < 1024**3:  # MB
+        return f"{total_size / (1024**2):.2f} MB"
+    else:  # GB
+        return f"{total_size / (1024**3):.2f} GB"
 
 @ensure_annotations
 def get_avatar(sender_type: str) -> str:
