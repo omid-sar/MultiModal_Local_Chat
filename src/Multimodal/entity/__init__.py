@@ -15,10 +15,14 @@ class ModelLoadConfig:
     multimodal_model_directory: Path
 
 @dataclass(frozen=True)
-class URLProcessingConfig:
+class LLMChainsConfig:
     root_dir: Path
-    processed_directory: Path
-    temp_directory: Path
+    model_path_small: Path
+    model_path_large: Path
+    model_type: str
+    embedding_path: Path
+
+    
 
 @dataclass(frozen=True)
 class DataCleaningConfig:

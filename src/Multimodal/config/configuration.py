@@ -3,10 +3,11 @@ from Multimodal.constants import *
 from Multimodal.utils.common import read_yaml, create_directories
 from pathlib import Path
 from Multimodal.entity import ModelLoadConfig
+from Multimodal.entity import LLMChainsConfig
 
 from dotenv import load_dotenv
 
-from Multimodal.entity import URLProcessingConfig
+
 from Multimodal.entity import DataCleaningConfig
 from Multimodal.entity import VectorizationConfig
 from Multimodal.entity import DatabaseManagementConfig
@@ -41,13 +42,17 @@ class ConfigurationManager:
             multimodal_model_directory = Path(config['multimodal_model_directory']),
         )
 
-    def get_url_processing_config(self) -> URLProcessingConfig:
-        config = self.config['url_processing']
-        return URLProcessingConfig(
+    def get_llm_chains_config(self) -> LLMChainsConfig:
+        config = self.config['llm_chains']
+        return LLMChainsConfig(
             root_dir=Path(config['root_dir']),
-            processed_directory=Path(config['processed_directory']),
-            temp_directory=Path(config['temp_directory'])
+            model_path_small=Path(config['model_path']['small']),
+            model_path_large=Path(config['model_path']['large']),
+            model_type=config['model_type'],
+            embedding_path=Path(config['embedding_path'])  # Make sure this key matches exactly in your YAML.
         )
+
+
 
     def get_data_cleaning_config(self) -> DataCleaningConfig:
         config = self.config['data_cleaning']

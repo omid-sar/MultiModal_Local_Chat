@@ -4,7 +4,7 @@ artifacts_root: artifacts
 model_load:
   root_dir: artifacts/model_load
   text_processing_model_names:
-    #- "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q3_K_M.gguf"
+    - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q3_K_M.gguf"
     - "TheBloke/Mistral-7B-Instruct-v0.1-GGUF mistral-7b-instruct-v0.1.Q5_K_M.gguf"
   text_processing_model_directory: artifacts/model_load/text_processing_model
   sentences_embedding_model_name: "BAAI/bge-large-en-v1.5"
@@ -17,12 +17,14 @@ model_load:
   multimodal_model_directory: artifacts/model_load/multimodal_model
 
 
+llm_chains:
+  root_dir: artifacts/llm_chian
+  model_path:
+    small: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/models--TheBloke--Mistral-7B-Instruct-v0.1-GGUF"
+    large: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/mistral-7b-instruct-v0.1.Q5_K_M.gguf"
+  model_type: "mistral"
+  embedding_path: "artifacts/model_load/sentences_embedding_model/models--BAAI--bge-large-en-v1.5"
 
-# URL Content Processing
-url_processing:
-  root_dir: artifacts/url_processing
-  processed_directory: artifacts/url_processing/processed
-  temp_directory: artifacts/url_processing/temp
 
 # Data Cleaning
 data_cleaning:
