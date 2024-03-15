@@ -23,9 +23,11 @@ class LLMChains:
         self.create_chat_memory()
         self.create_prompt_from_template()
 
+
     def create_llm(self):
-        
-        pass
+        llm = CTransformers(model_path = str(self.config.model_path_large))
+        return llm
+       
     def create_llm_chain(self):
         pass
     def create_chat_memory(self):
@@ -35,12 +37,12 @@ class LLMChains:
     def load_normal_chain(self):
         pass 
 
-
-
-
-
-
-
+from pathlib import Path
+llm = CTransformers(model="/Users/omidsardari/WORK/Becoming a Data Scientist/Python Projects/Multimodal_Local_Chat/artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/mistral-7b-instruct-v0.1.Q5_K_M.gguf")
+"mistral-7b-instruct-v0.1.Q3_K_M.gguf"
+llm = CTransformers(model ="mistral-7b-instruct-v0.1.Q5_K_M.gguf")
+llm =
+llm
 #********************************************************************************************************
 # ******                                       Temporary parts                                   *******
 import os 
@@ -51,6 +53,8 @@ print (os.getcwd())
 configuration = ConfigurationManager()
 config = configuration.get_llm_chains_config()
 llm_chains = LLMChains(config)
+llm_chains.create_llm()
+
 
 
 #********************************************************************************************************
