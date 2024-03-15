@@ -12,6 +12,3 @@ from Multimodal.components.prompt_templates import memory_prompt_template
 from Multimodal.config.configuration import ConfigurationManager
 from Multimodal.entity import LLMChainsConfig
 
-
-llm = CTransformers(model ="mistral-7b-instruct-v0.1.Q5_K_M.gguf")
-llm = CTransformers(model ="c4b062ec7f0f160e848a0e34c4e291b9e39b3fc60df5b201c038e7064dbbdcdc")

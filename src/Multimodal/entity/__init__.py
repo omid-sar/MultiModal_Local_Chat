@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 @dataclass(frozen=True)
 class ModelLoadConfig:
@@ -20,6 +20,7 @@ class LLMChainsConfig:
     model_path_small: Path
     model_path_large: Path
     model_type: str
+    model_config: Dict[str, int]
     embedding_path: Path
 
     

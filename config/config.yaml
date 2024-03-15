@@ -20,9 +20,14 @@ model_load:
 llm_chains:
   root_dir: artifacts/llm_chian
   model_path:
-    small: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/models--TheBloke--Mistral-7B-Instruct-v0.1-GGUF"
-    large: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/mistral-7b-instruct-v0.1.Q5_K_M.gguf"
+    small: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q3_K_M.gguf/mistral-7b-instruct-v0.1.Q3_K_M.gguf"
+    large: "artifacts/model_load/text_processing_model/mistral-7b-instruct-v0.1.Q5_K_M.gguf/mistral-7b-instruct-v0.1.Q5_K_M.gguf"
   model_type: "mistral"
+  model_config:
+    'max_new_tokens': 512
+    'temperature' : 0
+    'context_length': 4096
+    'gpu_layers' : 0
   embedding_path: "artifacts/model_load/sentences_embedding_model/models--BAAI--bge-large-en-v1.5"
 
 

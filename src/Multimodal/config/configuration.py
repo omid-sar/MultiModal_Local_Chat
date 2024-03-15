@@ -46,10 +46,11 @@ class ConfigurationManager:
         config = self.config['llm_chains']
         return LLMChainsConfig(
             root_dir=Path(config['root_dir']),
-            model_path_small=Path(config['model_path']['small']),
-            model_path_large=Path(config['model_path']['large']),
+            model_path_small=config['model_path']['small'],
+            model_path_large=config['model_path']['large'],
             model_type=config['model_type'],
-            embedding_path=Path(config['embedding_path'])  # Make sure this key matches exactly in your YAML.
+            model_config=config['model_config'], 
+            embedding_path=config['embedding_path']
         )
 
 
