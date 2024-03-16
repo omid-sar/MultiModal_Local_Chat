@@ -21,7 +21,7 @@ class LLMChainsConfig:
     model_path_large: Path
     model_type: str
     model_config: Dict[str, int]
-    embedding_path: Path
+    embedding_path: str
 
     
 

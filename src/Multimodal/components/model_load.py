@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import subprocess
 from huggingface_hub import hf_hub_download, snapshot_download
-
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from Multimodal.logging import logger
 from Multimodal.utils.common import get_size
@@ -44,7 +44,8 @@ class ModelLoad:
         model_path = self.config.sentences_embedding_model_directory
 
         if not model_path.exists():
-            snapshot_download(repo_id=model_name, cache_dir=model_path)
+            #snapshot_download(repo_id=model_name, cache_dir=model_path)
+            HuggingFaceEmbeddings(model_name=model_name, cache_folder=str(model_path))
             logger.info(f"{model_name} downloaded and saved to {model_path}")
         else:
             logger.info(f"Model {model_name} already exists at {model_path}. Skipping download. Size: {get_size(model_path)}")

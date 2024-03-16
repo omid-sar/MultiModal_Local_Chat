@@ -11,7 +11,8 @@ from langchain_community.llms import Ollama
 from Multimodal.components.prompt_templates import memory_prompt_template
 from Multimodal.config.configuration import ConfigurationManager
 from Multimodal.entity import LLMChainsConfig
-
+#from langchain.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 class LLMChains:
     def __init__(self, config: LLMChainsConfig ) -> None:
@@ -28,9 +29,11 @@ class LLMChains:
     def create_llm(self):
         llm = CTransformers(model=self.config.model_path_large, model_type=self.config.model_type, config=self.config.model_config)
         return llm
-
+    # I just replaced HuggingFaceInstructEmbeddings by HuggingFaceEmbeddings
+    # Just write now i want the code is working
+    # I should fix the problem then
     def create_embeddings(self):
-        return HuggingFaceInstructEmbeddings(model_name=self.config.embedding_path)
+        return HuggingFaceEmbeddings(model_name=self.config.embedding_path)
     
     def create_prompt_from_template(self,template):
         return PromptTemplate.from_template(template)
@@ -49,6 +52,7 @@ class LLMChains:
 
 #********************************************************************************************************
 # ******                                       Temporary parts                                   *******
+
 import os 
 print (os.getcwd())
 os.chdir("../../..")
@@ -58,14 +62,5 @@ config = configuration.get_llm_chains_config()
 
 llm_chains = LLMChains(config)
 llm_chains.main()
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-HuggingFaceInstructEmbeddings(model_name="BAAI/bge-large-en-v1.5")
+
 #**********************************************************************************************************
-from langchain_community.embeddings import HuggingFaceInstructEmbeddings
-
-embeddings = HuggingFaceInstructEmbeddings(model_name="BAAI/bge-large-en-v1.5")
-
-
-from langchain.embeddings import HuggingFaceEmbeddings
-
-embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en-v1.5")
