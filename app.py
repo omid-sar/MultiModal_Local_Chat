@@ -1,12 +1,16 @@
 import streamlit as st
+from langchain.memory import StreamlitChatMessageHistory
 from Multimodal.config.configuration import ConfigurationManager
 from Multimodal.components.llm_chains import LLMChains
 from Multimodal.utils.common import get_timestamp, get_avatar
 #import sqlite3
 #from streamlit_mic_recorder import mic_recorder
+configuration = ConfigurationManager()
+config = configuration.get_llm_chains_config()
+llm_chain = LLMChains(config)
 
 def load_chain():
-    return 
+    pass
 
 
 def set_send_input():
@@ -30,6 +34,7 @@ def main():
     if "send_input" not in st.session_state:
         st.session_state.send_input = False
         st.session_state.user_question = ""
+    chat_history = StreamlitChatMessageHistory(key="history")
     # We dont use chat_input beacuse of multimodality of model, user may want to upload a file or etc.
     user_input = st.text_input("Type your prompt here", key="user_input", on_change=set_send_input)
 
@@ -41,6 +46,7 @@ def main():
 
             with chat_container:
                 st.chat_message("user").write(st.session_state.user_question)
+                llm_response = llm_chain.run(chat_history, st.session_state.user_question)
                 st.chat_message("ai").write(llm_response)
 
    
