@@ -28,6 +28,8 @@ def clear_input_field():
 def main():
     # Title 
     st.title('The :blue[coolest] MultiModal ChatBot :sunglasses:')
+
+    st.sidebar.title("Chat Session")
     # Instantiate container 
     chat_container = st.container()
 

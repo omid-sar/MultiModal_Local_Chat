@@ -22,6 +22,7 @@ class LLMChainsConfig:
     model_type: str
     model_config: Dict[str, int]
     embedding_path: str
+    chat_sessions_directory: Path
 
     
 
