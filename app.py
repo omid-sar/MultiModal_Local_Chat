@@ -41,15 +41,20 @@ def main():
     send_buttom = st.button(":blue[SEND]", key="send_buttom")
     if send_buttom or st.session_state.send_input:
         if st.session_state.user_question != "":
-            llm_response = f"This is Place holder for the future model response and the prompt was: {st.session_state.user_question}"
 
 
             with chat_container:
                 st.chat_message("user").write(st.session_state.user_question)
                 llm_response = llm_chain.run(chat_history, st.session_state.user_question)
                 st.chat_message("ai").write(llm_response)
+                st.session_state.user_question = ""
+        
+        if chat_history.messages != []:
+            st.write("Chat History:")
+            for message in chat_history.messages:
+                st.chat_message(message.type).write(message.content)
 
-   
+            
 
 if __name__ =="__main__":
     main()
