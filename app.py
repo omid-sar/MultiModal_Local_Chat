@@ -56,6 +56,22 @@ def main():
                 st.write("Chat History:")
                 for message in chat_history.messages:
                     st.chat_message(message.type).write(message.content)
+ send_buttom = st.button(":blue[SEND]", key="send_buttom")
+    if send_buttom or st.session_state.send_input:
+        if st.session_state.user_question != "":
+
+
+            with chat_container:
+                #st.chat_message("user").write(st.session_state.user_question)
+                llm_response = llm_chain.run(chat_history, st.session_state.user_question)
+                #st.chat_message("ai").write(llm_response)
+                st.session_state.user_question = ""
+        
+        if chat_history.messages != []:
+            with chat_container:
+                st.write("Chat History:")
+                for message in chat_history.messages:
+                    st.chat_message(message.type).write(message.content)
 
                 
 
