@@ -1,5 +1,5 @@
 import os
-from Multimodal.constants import *
+from Multimodal.constants import CONFIG_FILE_PATH
 from Multimodal.utils.common import read_yaml, create_directories
 from pathlib import Path
 from Multimodal.entity import ModelLoadConfig
@@ -28,30 +28,30 @@ class ConfigurationManager:
 
     def get_model_load_config(self) -> ModelLoadConfig:
         config = self.config.model_load
-        create_directories([Path(config['root_dir'])])
+        create_directories(config.root_dir)
         
         return ModelLoadConfig(
-            root_dir = Path(config['root_dir']),
-            text_processing_model_names = config['text_processing_model_names'],
-            text_processing_model_directory = Path(config['text_processing_model_directory']),
-            sentences_embedding_model_name = config['sentences_embedding_model_name'],
-            sentences_embedding_model_directory = Path(config['sentences_embedding_model_directory']),
-            audio_transcription_model_name = config['audio_transcription_model_name'],
-            audio_transcription_model_directory = Path(config['audio_transcription_model_directory']),
-            multimodal_model_names = config['multimodal_model_names'],
-            multimodal_model_directory = Path(config['multimodal_model_directory']),
+            root_dir = Path(config.root_dir),
+            text_processing_model_names = config.text_processing_model_names,
+            text_processing_model_directory = Path(config.text_processing_model_directory),
+            sentences_embedding_model_name = config.sentences_embedding_model_name,
+            sentences_embedding_model_directory = Path(config.sentences_embedding_model_directory),
+            audio_transcription_model_name = config.audio_transcription_model_name,
+            audio_transcription_model_directory = Path(config.audio_transcription_model_directory),
+            multimodal_model_names = config.multimodal_model_names,
+            multimodal_model_directory = Path(config.multimodal_model_directory),
         )
 
     def get_llm_chains_config(self) -> LLMChainsConfig:
-        config = self.config['llm_chains']
+        config = self.config.llm_chains
         return LLMChainsConfig(
-            root_dir=Path(config['root_dir']),
-            model_path_small=config['model_path']['small'],
-            model_path_large=config['model_path']['large'],
-            model_type=config['model_type'],
-            model_config=config['model_config'], 
-            embedding_path=config['embedding_path'], 
-            chat_sessions_directory = Path(config['chat_sessions_directory'])
+            root_dir=Path(config.root_dir),
+            model_path_small=config.model_path.small,
+            model_path_large=config.model_path.large,
+            model_type=config.model_type,
+            model_config=config.model_config, 
+            embedding_path=config.embedding_path, 
+            chat_sessions_directory = Path(config.chat_sessions_directory)
         )
 
 

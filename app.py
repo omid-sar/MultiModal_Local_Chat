@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.memory import StreamlitChatMessageHistory
 from Multimodal.config.configuration import ConfigurationManager
 from Multimodal.components.llm_chains import LLMChains
-from Multimodal.utils.common import get_timestamp, get_avatar
+from Multimodal.utils.common import save_chat_history_json, load_chat_history_json, get_timestamp, get_avatar
 #import sqlite3
 #from streamlit_mic_recorder import mic_recorder
 configuration = ConfigurationManager()
@@ -46,9 +46,7 @@ def main():
 
 
             with chat_container:
-                #st.chat_message("user").write(st.session_state.user_question)
                 llm_response = llm_chain.run(chat_history, st.session_state.user_question)
-                #st.chat_message("ai").write(llm_response)
                 st.session_state.user_question = ""
         
         if chat_history.messages != []:
@@ -56,6 +54,10 @@ def main():
                 st.write("Chat History:")
                 for message in chat_history.messages:
                     st.chat_message(message.type).write(message.content)
+
+
+    print(chat_history)
+    
 
                 
 
