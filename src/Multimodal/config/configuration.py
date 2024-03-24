@@ -39,7 +39,7 @@ class ConfigurationManager:
             audio_transcription_model_name = config.audio_transcription_model_name,
             audio_transcription_model_directory = Path(config.audio_transcription_model_directory),
             multimodal_model_names = config.multimodal_model_names,
-            multimodal_model_directory = Path(config.multimodal_model_directory),
+            multimodal_model_directory = config.multimodal_model_directory,
         )
 
     def get_llm_chains_config(self) -> LLMChainsConfig:

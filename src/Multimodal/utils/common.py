@@ -55,7 +55,7 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 @ensure_annotations
-def save_chat_history_json(chat_history: List, file_path: str) -> None:
+def save_chat_history_json(chat_history: List, file_path: Path) -> None:
     """
     Saves the chat history to a JSON file.
 
@@ -63,6 +63,7 @@ def save_chat_history_json(chat_history: List, file_path: str) -> None:
         chat_history: A list of message objects (either HumanMessage or AIMessage).
         file_path: The path to the file where the chat history will be saved.
     """
+    
     with open(file_path, "w") as f:
         json_data = []
         for message in chat_history:

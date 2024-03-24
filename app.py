@@ -44,7 +44,6 @@ def main():
     if send_buttom or st.session_state.send_input:
         if st.session_state.user_question != "":
 
-
             with chat_container:
                 llm_response = llm_chain.run(chat_history, st.session_state.user_question)
                 st.session_state.user_question = ""
@@ -55,8 +54,8 @@ def main():
                 for message in chat_history.messages:
                     st.chat_message(message.type).write(message.content)
 
-
-    print(chat_history)
+    #save_chat_history_json(chat_history=chat_history, file_path= config.chat_sessions_directory)
+    print(chat_history.messages)
     
 
                 
