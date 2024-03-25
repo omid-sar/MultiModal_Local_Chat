@@ -51,7 +51,7 @@ class ConfigurationManager:
             model_type=config.model_type,
             model_config=config.model_config, 
             embedding_path=config.embedding_path, 
-            chat_sessions_directory = Path(config.chat_sessions_directory)
+            chat_sessions_directory = config.chat_sessions_directory
         )
 
 

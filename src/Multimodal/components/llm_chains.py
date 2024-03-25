@@ -43,8 +43,6 @@ class LLMChains:
     def create_llm_chain(self, llm, chat_prompt, memory):
         return LLMChain(llm=llm, prompt=chat_prompt, memory=memory)
     
-
-
     def create_chat_memory(self, chat_history):
         return ConversationBufferWindowMemory(memory_key="history", chat_memory=chat_history, k= 5)
       
@@ -72,4 +70,4 @@ empty_chat_history = ChatMessageHistory()
 llm_chains.run(chat_history=empty_chat_history, user_input="Go")
 """
 #**********************************************************************************************************
-# Import necessary libraries and modules
+

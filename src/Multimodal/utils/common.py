@@ -3,6 +3,7 @@ from box.exceptions import BoxValueError
 import yaml
 import json
 from typing import List
+from datetime import datetime
 # Assuming HumanMessage and AIMessage are defined elsewhere and imported correctly
 from Multimodal.logging import logger
 from Multimodal.constants import *
@@ -54,7 +55,7 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 
-@ensure_annotations
+
 def save_chat_history_json(chat_history: List, file_path: Path) -> None:
     """
     Saves the chat history to a JSON file.
@@ -85,16 +86,32 @@ def load_chat_history_json(file_path: str) -> List:
     Returns:
         A list of message objects (either HumanMessage or AIMessage based on the type specified in the JSON).
     """
-    with open(file_path, "r") as f:
-        json_data = json.load(f)
-        messages = []
-        for message in json_data:
+    try:
+        with open(file_path, "r") as f:
+                json_data = json.load(f)
+    except FileNotFoundError as e:
+            logger.error(f"Chat history file not found: {file_path}")
+            raise FileNotFoundError(f"Chat history file not found: {file_path}") from e
+    except json.JSONDecodeError as e:
+                logger.error(f"Invalid JSON format in file: {file_path}")
+                raise json.JSONDecodeError(f"Invalid JSON format in file: {file_path}") from e
+            
+    messages = []
+    for message in json_data:
+        try:
             if message["type"] == "human":
                 messages.append(HumanMessage(**message))
-            else:
+            elif message["type"] == "ai":
                 messages.append(AIMessage(**message))
-            logger.info(f"Chat history successfully loaded from {file_path}.")
-            return messages
+            else:
+                logger.warning(f"Unknown message type encountered: {message['type']}")
+                pass
+        except KeyError as e:
+            logger.warning(f"Missing key in message: {e}")
+            pass
+
+    logger.info(f"Chat history successfully loaded from {file_path}.")
+    return messages
 
 
 def get_size(path: Path) -> str:
