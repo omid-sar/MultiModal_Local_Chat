@@ -27,18 +27,13 @@ def clear_input_field():
 def save_chat_history():
     if st.session_state.history != []:
         if st.session_state.session_key == "NEW_SESSION":
-            st.session_state.new_session_key = get_timestamp()
+            st.session_state.new_session_key = get_timestamp() 
 
             file_path = Path(config.chat_sessions_directory + st.session_state.new_session_key + ".json")
         else:
             file_path = Path(config.chat_sessions_directory + st.session_state.session_key + ".json")
         
         save_chat_history_json(chat_history=st.session_state.history, file_path = file_path)
-
-
-
-
-
 
 
 def main():
@@ -60,7 +55,16 @@ def main():
         st.session_state.session_index_tracker = st.session_state.new_session_key
         st.session_state.new_session_key = None
 
-    st.sidebar.selectbox("Select a chat session", chat_sessions, key="chat_session")
+    index = chat_sessions.index(st.session_state.session_index_tracker)
+    st.sidebar.selectbox("Select a chat session", chat_sessions, key="session_key", index=index)
+
+
+    if st.session_state.session_key != "NEW_SESSION":
+        st.session_state.history = load_chat_history_json(config.chat_sessions_directory + st.session_state.session_key)
+    else:
+        st.session_state.history = []
+
+
 
     chat_history = StreamlitChatMessageHistory(key="history")
     # We dont use chat_input beacuse of multimodality of model, user may want to upload a file or etc.
