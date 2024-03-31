@@ -97,6 +97,13 @@ def main():
     st.write("session_state:", st.session_state)
     st.write("st.session_state.history", st.session_state.history)
 #**********************************************************************************************************
+#********************************************************************************************************
+# ******                                       Temporary parts                                   *******
+            
+    st.write("**********************************  THIS PART IS FOR DEVELOPMENT PURPOSES *************************")
+    st.write("session_state:", st.session_state)
+    st.write("st.session_state.history", st.session_state.history)
+#**********************************************************************************************************
 
             
 if __name__ =="__main__":
