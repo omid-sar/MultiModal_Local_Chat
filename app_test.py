@@ -55,39 +55,6 @@ def main():
         st.session_state.session_index_tracker = st.session_state.new_session_key
         st.session_state.new_session_key = None
 
-    index = chat_sessions.index(st.session_state.session_index_tracker)
-    st.sidebar.selectbox("Select a chat session", chat_sessions, key="session_key", index=index)
-
-
-    if st.session_state.session_key != "NEW_SESSION":
-        st.session_state.history = load_chat_history_json(config.chat_sessions_directory + st.session_state.session_key)
-    else:
-        st.session_state.history = []
-
-
-
-    chat_history = StreamlitChatMessageHistory(key="history")
-    # We dont use chat_input beacuse of multimodality of model, user may want to upload a file or etc.
-    user_input = st.text_input("Type your prompt here", key="user_input", on_change=set_send_input)
-
-    send_buttom = st.button(":blue[SEND]", key="send_buttom")
-    if send_buttom or st.session_state.send_input:
-        if st.session_state.user_question != "":
-
-            with chat_container:
-                llm_response = llm_chain.run(chat_history, st.session_state.user_question)
-                st.session_state.user_question = ""
-        
-        if chat_history.messages != []:
-            with chat_container:
-                st.write("Chat History:")
-                for message in chat_history.messages:
-                    st.chat_message(message.type).write(message.content)
-    save_chat_history()
-
-                    
-
-
 
 
 
